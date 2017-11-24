@@ -20,8 +20,9 @@ Page({
   },
   ontap: function(event){
     var postiid = event.currentTarget.dataset.postisd;
-    var postiiid = event.currentTarget.dataset.postname;
-    console.log(postiiid);
+    wx.navigateTo({
+      url: 'post-detail/post-detail',
+    })
   },
 
   /**

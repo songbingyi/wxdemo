@@ -1,1 +1,29 @@
 /* page/post/post-detail/post-detail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.tophead {
+  width: 100%;
+}
+.author-data {
+  flex-direction: row;
+
+}
+.author-data image {
+ width: 64rpx;
+ height: 64rpx;
+ vertical-align: middle
+}
+.author {
+  font-size: 30rpx;
+  font-weight: 300;
+  margin-left: 20rpx;
+  vertical-align: middle;
+  color: #666;
+}
+.issue-time{
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  color: #999;
+}

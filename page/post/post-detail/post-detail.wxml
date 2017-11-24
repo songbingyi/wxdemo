@@ -1,2 +1,20 @@
 <!--page/post/post-detail/post-detail.wxml-->
-<text>page/post/post-detail/post-detail.wxml</text>
+<view class='container'>
+  <image src='/images/4.jpg' class='tophead'></image>
+  <view class='author-data'>
+    <image src='/images/1.png'></image>
+    <text class='author'>林白衣</text>
+    <text class='issue-time'>发表于</text>
+    <text class='issue-time'>24小时之前</text>
+  </view>
+  <text>炉石传说好玩吗</text>
+  <view>
+    <view>
+      <image src=''></image>
+      <image src=''></image>
+    </view>
+    <view></view>
+  </view>
+  <text>这其中不得不说的就是立下汗马功劳的绝地求生(PUBG)。这个以今晚吃鸡为目的的苟活类游戏年初上线后立即在全世界范围内火得一塌糊涂(霸占steam销量榜冠军N周，打破N项纪录)，几乎要复制十几年前CS火遍全中国网吧的奇迹。</text>
+
+</view>
