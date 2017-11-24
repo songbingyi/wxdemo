@@ -22,8 +22,14 @@
   vertical-align: middle;
   color: #666;
 }
-.issue-time{
+.issue-text{
   font-size: 24rpx;
   margin-left: 20rpx;
   color: #999;
 }
+.issue-time{
+  font-size: 24rpx;
+
+  color: #999;
+}
+

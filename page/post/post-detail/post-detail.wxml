@@ -4,7 +4,7 @@
   <view class='author-data'>
     <image src='/images/1.png'></image>
     <text class='author'>林白衣</text>
-    <text class='issue-time'>发表于</text>
+    <text class='issue-text'>发表于</text>
     <text class='issue-time'>24小时之前</text>
   </view>
   <text>炉石传说好玩吗</text>
