@@ -1,0 +1,19 @@
+<template name="post-item-template">
+<view class='post-container'>
+  <view class='issue'>
+    <image src="/images/2.png"></image>
+    <text>{{date}}</text>
+  </view>
+  <text class='post-title'>{{title}}</text>
+  <view class='content'>
+    <image src="{{post_image}}"></image>
+    <text>"竞技未测试，估计拿出来直接爆炸，因为快速游戏 我进攻拿托比昂就已经基本上爆炸了。但没关系，我已经多次用托比昂，在重建帝国源氏猎空无奶进攻队的情况下胜过对方有奶队了。"</text>
+  </view>
+  <view class='follow'>
+    <image src='/images/chat.png'></image>
+    <text>{{view_num}}</text>
+    <image src='/images/colect.png'></image>
+    <text>{{collect}}</text>
+  </view>
+</view>
+</template>

@@ -1,0 +1,21 @@
+<import src="post-item/post-item.wxml" />
+
+<view>
+  <swiper indicator-dots="true" autoplay='"true"'>
+    <swiper-item>
+      <image src="/images/1.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/2.jpg"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/3.jpg"></image>
+    </swiper-item>
+  </swiper>
+
+  <block wx:for="{{content}}">
+    <view catchtap='ontap' data-postisd="{{item.postid}}" data-postname="{{item.title}}">
+      <template is="post-item-template" data="{{...item}}" />
+    </view>
+  </block>
+</view>

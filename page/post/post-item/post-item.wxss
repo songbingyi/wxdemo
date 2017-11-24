@@ -1,0 +1,65 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: #fff;
+  border-top: 1px solid #ededed;
+  border-bottom: 1px solid #ededed;
+  padding-top: 5px;
+}
+.issue {
+  margin: 10rpx 0 20rpx 10rpx;
+}
+.issue image {
+  width:60rpx;
+  height:60rpx;
+  vertical-align: middle;
+}
+.issue text {
+  font-size:26rpx; 
+  font-weight: 600;
+  line-height:40rpx;
+  margin-left: 20rpx;
+  color:#333333;
+  vertical-align: middle;
+}
+.post-title {
+  font-size: 36rpx;
+  color: #666;
+  margin-left: 20rpx;
+  margin-bottom: 10px;
+}
+.content {
+  margin-bottom: 10px;
+}
+.content image {
+  width: 100%;
+  height: 460rpx;
+  margin-bottom: 15px;
+}
+.content text {
+  width: 750rpx;
+  margin:10px;
+  font-size: 28rpx;
+  color: #666;
+  letter-spacing: 2rpx;
+  line-height: 40rpx;
+  font-weight: bold;
+}
+
+.follow {
+  margin: 0 0 10rpx 10rpx;
+  font-size: 20rpx;
+  flex-direction: row;
+}
+.follow image{
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  margin-right: 8rpx;
+}
+.follow text {
+  color: #d9d9d9;
+  margin-right: 16rpx;
+  vertical-align: middle;
+}
