@@ -14,7 +14,7 @@
   </swiper>
 
   <block wx:for="{{content}}">
-    <view catchtap='ontap' data-postisd="{{item.postid}}" data-postname="{{item.title}}">
+    <view catchtap='ontap' data-postid="{{item.postid}}" >
       <template is="post-item-template" data="{{...item}}" />
     </view>
   </block>

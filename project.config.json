@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
-	"appid": "touristappid",
-	"projectname": "imgtest",
+	"appid": "wx40baad09a443a032",
+	"projectname": "wxdemo",
 	"condition": {
 		"search": {
 			"current": -1,

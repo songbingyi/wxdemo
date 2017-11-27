@@ -4,7 +4,10 @@ var local_database = [{
   post_image: "/images/1.jpg",
   view_num: "1111",
   collect: "1111",
-  postid: 1
+  postid: 1,
+  headImgSrc: "/images/1.jpg",
+  author: "林白衣",
+  postTime: "24小时前"
 },
 {
   date: "Nov 25 20172",
