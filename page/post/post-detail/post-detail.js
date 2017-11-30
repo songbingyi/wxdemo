@@ -13,10 +13,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var postdatas = postData.postlist[options.id];
-      console.log(postData);
+      var postid= options.id;
+      this.setData({post_id:postid});//利用data传递postid
+      var postdatas = postData.postlist[postid];
       this.setData({postdatas});
-      
+
+      var collectStatus = wx.getStorageSync("post_Collected");
+      if(collectStatus){
+          var postcollected = collectStatus.postid;//collectStatus是数组还是对象
+          this.setData({ collected: postcollected});
+      }else{
+          var collectStatus = {};
+          collectStatus.postid = false;
+          wx.setStorageSync("post_Collected", collectStatus);
+      }
+  },
+  onCollectionTap: function(events){
+      console.log(this.data.post_id);
   },
 
   /**
