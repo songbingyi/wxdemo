@@ -17,12 +17,13 @@ Page({
         this.setData({ post_id: postid });//利用data传递postid
         var postdatas = postData.postlist[postid];
         this.setData({ postdatas });
+        this.setData({ musicStatus: false });//音乐播放初始数据
 
         //post_collected = {1:"false",2:"true"};
 
         var collectStatus = wx.getStorageSync("post_Collected");
-        if (collectStatus[postid]) {
-            var postcollected = collectStatus[postid];//collectStatus是数组还是对象
+        if (collectStatus) {
+            var postcollected = collectStatus[postid];//collectStatus是数组还是对象。更新：直接通过属性访问加引号，如a["b"]可以访问 a={b:"1"};也可以通过变量名访问属性，如：var x = "b", a[x] //1。
             this.setData({ collected: postcollected });
         } else {
             var collectStatus = {}
@@ -31,10 +32,84 @@ Page({
         }
     },
     onCollectionTap: function (events) {
-
-
+        this.onCollectionTapSync();//使用同步方法
     },
+    onCollectionTapAsy: function (events) {
+        var that = this;
+        wx.getStorage({
+            key: 'post_Collected',
+            success: function (res) {
+                var collectStatus = res.data;
+                var postid = that.data.post_id;
+                var postcollected = collectStatus[postid];
+                postcollected = !postcollected;
+                collectStatus[postid] = postcollected;
+                that.setData({ collected: postcollected });
+                wx.setStorageSync("post_Collected", collectStatus);
+                that.showToast(postcollected);
+            },
+        })
+    },//异步方法
+    onCollectionTapSync: function (events) {
+        var collectStatus = wx.getStorageSync("post_Collected");
+        var postid = this.data.post_id;
+        var postcollected = collectStatus[postid];
+        postcollected = !postcollected;
+        collectStatus[postid] = postcollected;
+        this.setData({ collected: postcollected });
+        wx.setStorageSync("post_Collected", collectStatus);
+        this.showToast(postcollected);
+    },//同步方法
 
+    showToast: function (postcollected) {
+        wx.showToast({
+            title: postcollected ? '收藏成功' : '取消收藏',
+            duration: 800,
+        })
+    },
+    onShareTap: function (event) {
+        var shareList = ["分享到微博", "分享到微信", "分享到QQ"]
+        wx.showActionSheet({
+            itemList: shareList,
+            itemColor: "#405f80",
+            success: function (res) {
+                wx.showModal({
+                    title: '用户' + shareList[res.tapIndex],
+                    content: shareList[res.tapIndex] + '功能暂时不可用',
+                })
+
+            }
+        })
+    },
+    // showModal: function (collectStatus, postcollected) {
+    //     var that = this;
+    //     wx.showModal({
+    //         title: '收藏',
+    //         content: postcollected?'是否收藏该文章':'取消收藏该文章?',
+    //         confirmText: '确认',
+    //         cancelText: '取消',
+    //         success: function (res) {
+    //             if (res.confirm) {
+    //                 that.setData({ collected: postcollected });
+    //                 wx.setStorageSync("post_Collected", collectStatus);
+    //             }
+    //         }
+    //     })
+    // },
+    onMusicTap: function () {
+        var musicData = this.data.musicStatus;
+        musicData = !musicData;
+        if (musicData) {
+            this.setData({ musicStatus: musicData });
+            wx.playBackgroundAudio({
+                coverImgUrl: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000',
+                dataUrl: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
+            })
+        } else {
+            this.setData({ musicStatus: musicData });
+            wx.pauseBackgroundAudio();
+        }
+    },//控制音乐播放
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

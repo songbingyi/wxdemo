@@ -1,8 +1,9 @@
 {
   "pages":[
-    "page/welcom/welcom",
+    
     "page/post/post",
-    "page/post/post-detail/post-detail"
+    "page/post/post-detail/post-detail",
+    "page/welcom/welcom"
   ],
   "window":{
   "navigationBarBackgroundColor": "#405f80"

@@ -1,6 +1,6 @@
 <!--page/post/post-detail/post-detail.wxml-->
 <view class='container'>
-    <image src='/images/play.png' class='play-btn'></image>
+    <image src="{{musicStatus?'/images/stop.png':'/images/play.png'}}" class='play-btn' catchtap='onMusicTap'></image>
     <image src='{{postdatas.headImgSrc}}' class='tophead'></image>
     <view class='author-data'>
         <image src='/images/1.png'></image>
@@ -11,7 +11,7 @@
     </view>
     <text class='title'>{{postdatas.title}}</text>
     <view class='tool'>
-        <image src='/images/t1.png' catchtap='' ></image>
+        <image catchtap='onShareTap' src='/images/t1.png' ></image>
         <image wx:if="{{collected}}" src='/images/t2.png' catchtap='onCollectionTap'></image>
         <image wx:else src='/images/t21.png' catchtap='onCollectionTap'></image>
         <view class='horizn'></view>
