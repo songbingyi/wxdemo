@@ -1,0 +1,17 @@
+<import src="block.wxml" />
+<template name="movie-list">
+    <view>
+        <view class='list-container'>
+            <text class="list-title">正在热映</text>
+            <view class='more-box'>
+                <text>更多</text>
+                <image src='/images/icon/arrow-right.png'></image>
+            </view>
+        </view>
+        <view class='block-box'>
+        <template is="movie-block" />
+        <template is="movie-block" />
+        <template is="movie-block" />
+        </view>
+    </view>
+</template>

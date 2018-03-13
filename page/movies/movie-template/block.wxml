@@ -1,0 +1,10 @@
+<import src="rank.wxml" />
+<template name="movie-block">
+    <view class='block-container'>
+        <image class='block-img' src='/images/movie1.jpg' ></image>
+        <text class='block-text'>你的名字</text>
+        <template is="movie-rank" />
+        
+    </view>
+      
+</template>

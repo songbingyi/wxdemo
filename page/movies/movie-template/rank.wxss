@@ -1,0 +1,18 @@
+.container-rank {
+    display: flex;
+    flex-direction: row;
+}
+.stars-box {
+    display: flex;
+    flex-direction: row;
+    margin-right: 12rpx;
+}
+.star {
+height: 17rpx;
+width: 17rpx;
+margin-right: 4rpx;
+}
+.rank-text {
+    color: #9f9f9f;
+    line-height: 17rpx;
+}

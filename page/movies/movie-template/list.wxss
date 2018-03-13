@@ -1,0 +1,24 @@
+@import 'block.wxss';
+.list-container {
+
+}
+.list-title {
+    color: #9f9f9f;
+    margin-left: 10rpx;
+}
+.more-box {
+    float: right;
+    height: 32rpx;
+}
+.more-box text {
+   
+}
+.more-box image {
+    width: 18rpx;
+    height: 32rpx;
+    vertical-align: middle;
+}
+.block-box {
+    display: flex;
+    flex-direction: row;
+}

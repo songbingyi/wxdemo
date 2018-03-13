@@ -1,5 +1,6 @@
 // page/post/post-detail/post-detail.js
 var postData = require("../../../data/posts-data.js");
+var app = getApp()
 Page({
 
     /**
@@ -13,11 +14,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+
         var postid = options.id;
         this.setData({ post_id: postid });//利用data传递postid
         var postdatas = postData.postlist[postid];
         this.setData({ postdatas });
-        this.setData({ musicStatus: false });//音乐播放初始数据
+        if (app.globalData.g_musicStatus){
+            this.setData({ musicStatus: true })
+        }//如果全局变量为真 设置音乐监听变量为真
+
 
         //post_collected = {1:"false",2:"true"};
 
@@ -30,6 +35,21 @@ Page({
             collectStatus[postid] = false;
             wx.setStorageSync("post_Collected", collectStatus);
         }
+        var that = this;
+        wx.onBackgroundAudioPlay(function(){
+            that.setData({musicStatus:true})
+        })
+        wx.onBackgroundAudioPause(function(){
+            that.setData({musicStatus:false});
+        })
+
+        //计数器开始
+
+        var counts = wx.getStorageSync('counts')
+        counts[postid]++;
+        wx.setStorageSync('counts', counts);
+       
+        
     },
     onCollectionTap: function (events) {
         this.onCollectionTapSync();//使用同步方法
@@ -97,14 +117,19 @@ Page({
     //     })
     // },
     onMusicTap: function () {
+        var postid = this.data.post_id;
+        var musicDatas = postData.postlist[postid].musicData;
+        console.log(musicDatas);
         var musicData = this.data.musicStatus;
         musicData = !musicData;
         if (musicData) {
             this.setData({ musicStatus: musicData });
             wx.playBackgroundAudio({
-                coverImgUrl: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000',
-                dataUrl: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
-            })
+                coverImgUrl: musicDatas.coverImgUrl,
+                dataUrl: musicDatas.src,
+                title: musicDatas.title
+            });
+            app.globalData.g_musicStatus = true;//同时设置全局变量为真
         } else {
             this.setData({ musicStatus: musicData });
             wx.pauseBackgroundAudio();
